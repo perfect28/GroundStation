@@ -62,11 +62,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btn_send = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.pb_thr = new System.Windows.Forms.ProgressBar();
+            this.pb_rol = new System.Windows.Forms.ProgressBar();
+            this.label_thr = new System.Windows.Forms.Label();
+            this.label_rol = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Button();
+            this.pb_yaw = new System.Windows.Forms.ProgressBar();
+            this.pb_pit = new System.Windows.Forms.ProgressBar();
+            this.label_yaw = new System.Windows.Forms.Label();
+            this.label_pit = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label13
@@ -286,7 +290,7 @@
             this.yaw_p.Name = "yaw_p";
             this.yaw_p.Size = new System.Drawing.Size(63, 26);
             this.yaw_p.TabIndex = 71;
-            this.yaw_p.Text = "65535";
+            this.yaw_p.Text = "0";
             this.yaw_p.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pit_p
@@ -296,7 +300,7 @@
             this.pit_p.Name = "pit_p";
             this.pit_p.Size = new System.Drawing.Size(63, 26);
             this.pit_p.TabIndex = 70;
-            this.pit_p.Text = "65535";
+            this.pit_p.Text = "0";
             this.pit_p.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rol_p
@@ -306,7 +310,7 @@
             this.rol_p.Name = "rol_p";
             this.rol_p.Size = new System.Drawing.Size(63, 26);
             this.rol_p.TabIndex = 69;
-            this.rol_p.Text = "65535";
+            this.rol_p.Text = "0";
             this.rol_p.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // yaw_i
@@ -316,7 +320,7 @@
             this.yaw_i.Name = "yaw_i";
             this.yaw_i.Size = new System.Drawing.Size(63, 26);
             this.yaw_i.TabIndex = 74;
-            this.yaw_i.Text = "65535";
+            this.yaw_i.Text = "0";
             this.yaw_i.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pit_i
@@ -326,7 +330,7 @@
             this.pit_i.Name = "pit_i";
             this.pit_i.Size = new System.Drawing.Size(63, 26);
             this.pit_i.TabIndex = 73;
-            this.pit_i.Text = "65535";
+            this.pit_i.Text = "0";
             this.pit_i.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rol_i
@@ -336,7 +340,7 @@
             this.rol_i.Name = "rol_i";
             this.rol_i.Size = new System.Drawing.Size(63, 26);
             this.rol_i.TabIndex = 72;
-            this.rol_i.Text = "65535";
+            this.rol_i.Text = "0";
             this.rol_i.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // yaw_d
@@ -346,7 +350,7 @@
             this.yaw_d.Name = "yaw_d";
             this.yaw_d.Size = new System.Drawing.Size(63, 26);
             this.yaw_d.TabIndex = 77;
-            this.yaw_d.Text = "65535";
+            this.yaw_d.Text = "0";
             this.yaw_d.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pit_d
@@ -356,7 +360,7 @@
             this.pit_d.Name = "pit_d";
             this.pit_d.Size = new System.Drawing.Size(63, 26);
             this.pit_d.TabIndex = 76;
-            this.pit_d.Text = "65535";
+            this.pit_d.Text = "0";
             this.pit_d.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rol_d
@@ -366,7 +370,7 @@
             this.rol_d.Name = "rol_d";
             this.rol_d.Size = new System.Drawing.Size(63, 26);
             this.rol_d.TabIndex = 75;
-            this.rol_d.Text = "65535";
+            this.rol_d.Text = "0";
             this.rol_d.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
@@ -409,41 +413,45 @@
             this.btn_send.UseVisualStyleBackColor = true;
             this.btn_send.Click += new System.EventHandler(this.btn_send_Click);
             // 
-            // progressBar1
+            // pb_thr
             // 
-            this.progressBar1.Location = new System.Drawing.Point(62, 249);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(115, 52);
-            this.progressBar1.TabIndex = 82;
-            this.progressBar1.Value = 30;
+            this.pb_thr.Location = new System.Drawing.Point(43, 226);
+            this.pb_thr.Maximum = 2000;
+            this.pb_thr.Minimum = 1000;
+            this.pb_thr.Name = "pb_thr";
+            this.pb_thr.Size = new System.Drawing.Size(115, 52);
+            this.pb_thr.TabIndex = 82;
+            this.pb_thr.Value = 1000;
             // 
-            // progressBar2
+            // pb_rol
             // 
-            this.progressBar2.Location = new System.Drawing.Point(208, 249);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(115, 52);
-            this.progressBar2.TabIndex = 83;
-            this.progressBar2.Value = 30;
+            this.pb_rol.Location = new System.Drawing.Point(189, 226);
+            this.pb_rol.Maximum = 2000;
+            this.pb_rol.Minimum = 1000;
+            this.pb_rol.Name = "pb_rol";
+            this.pb_rol.Size = new System.Drawing.Size(115, 52);
+            this.pb_rol.TabIndex = 83;
+            this.pb_rol.Value = 1000;
             // 
-            // label16
+            // label_thr
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(98, 325);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 19);
-            this.label16.TabIndex = 84;
-            this.label16.Text = "电机1";
+            this.label_thr.AutoSize = true;
+            this.label_thr.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_thr.Location = new System.Drawing.Point(67, 281);
+            this.label_thr.Name = "label_thr";
+            this.label_thr.Size = new System.Drawing.Size(40, 19);
+            this.label_thr.TabIndex = 84;
+            this.label_thr.Text = "THR";
             // 
-            // label17
+            // label_rol
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.Location = new System.Drawing.Point(249, 325);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(46, 19);
-            this.label17.TabIndex = 85;
-            this.label17.Text = "电机2";
+            this.label_rol.AutoSize = true;
+            this.label_rol.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_rol.Location = new System.Drawing.Point(217, 281);
+            this.label_rol.Name = "label_rol";
+            this.label_rol.Size = new System.Drawing.Size(38, 19);
+            this.label_rol.TabIndex = 85;
+            this.label_rol.Text = "ROL";
             // 
             // btn_exit
             // 
@@ -455,17 +463,61 @@
             this.btn_exit.UseVisualStyleBackColor = true;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
+            // pb_yaw
+            // 
+            this.pb_yaw.Location = new System.Drawing.Point(43, 303);
+            this.pb_yaw.Maximum = 2000;
+            this.pb_yaw.Minimum = 1000;
+            this.pb_yaw.Name = "pb_yaw";
+            this.pb_yaw.Size = new System.Drawing.Size(115, 52);
+            this.pb_yaw.TabIndex = 82;
+            this.pb_yaw.Value = 1000;
+            // 
+            // pb_pit
+            // 
+            this.pb_pit.Location = new System.Drawing.Point(189, 303);
+            this.pb_pit.Maximum = 2000;
+            this.pb_pit.Minimum = 1000;
+            this.pb_pit.Name = "pb_pit";
+            this.pb_pit.Size = new System.Drawing.Size(115, 52);
+            this.pb_pit.TabIndex = 83;
+            this.pb_pit.Value = 1000;
+            // 
+            // label_yaw
+            // 
+            this.label_yaw.AutoSize = true;
+            this.label_yaw.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_yaw.Location = new System.Drawing.Point(67, 358);
+            this.label_yaw.Name = "label_yaw";
+            this.label_yaw.Size = new System.Drawing.Size(44, 19);
+            this.label_yaw.TabIndex = 84;
+            this.label_yaw.Text = "YAW";
+            // 
+            // label_pit
+            // 
+            this.label_pit.AutoSize = true;
+            this.label_pit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_pit.Location = new System.Drawing.Point(218, 358);
+            this.label_pit.Name = "label_pit";
+            this.label_pit.Size = new System.Drawing.Size(32, 19);
+            this.label_pit.TabIndex = 85;
+            this.label_pit.Text = "PIT";
+            // 
             // SettingPID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 407);
+            this.ClientSize = new System.Drawing.Size(558, 386);
             this.ControlBox = false;
             this.Controls.Add(this.btn_exit);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label_pit);
+            this.Controls.Add(this.label_rol);
+            this.Controls.Add(this.label_yaw);
+            this.Controls.Add(this.label_thr);
+            this.Controls.Add(this.pb_pit);
+            this.Controls.Add(this.pb_rol);
+            this.Controls.Add(this.pb_yaw);
+            this.Controls.Add(this.pb_thr);
             this.Controls.Add(this.btn_send);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
@@ -525,10 +577,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btn_send;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         public System.Windows.Forms.TextBox tb_mag_z;
         public System.Windows.Forms.TextBox tb_mag_y;
         public System.Windows.Forms.TextBox tb_mag_x;
@@ -548,5 +596,13 @@
         public System.Windows.Forms.TextBox pit_d;
         public System.Windows.Forms.TextBox rol_d;
         private System.Windows.Forms.Button btn_exit;
+        public System.Windows.Forms.ProgressBar pb_yaw;
+        public System.Windows.Forms.ProgressBar pb_pit;
+        public System.Windows.Forms.ProgressBar pb_thr;
+        public System.Windows.Forms.ProgressBar pb_rol;
+        public System.Windows.Forms.Label label_yaw;
+        public System.Windows.Forms.Label label_pit;
+        public System.Windows.Forms.Label label_thr;
+        public System.Windows.Forms.Label label_rol;
     }
 }

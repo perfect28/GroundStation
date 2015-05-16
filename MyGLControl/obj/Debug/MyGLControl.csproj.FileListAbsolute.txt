@@ -34,3 +34,13 @@ D:\Study\OurProject\MyGLControl\obj\Debug\MyGLControl.Axles3D.resources
 D:\Study\OurProject\MyGLControl\obj\Debug\MyGLControl.csproj.GenerateResource.Cache
 D:\Study\OurProject\MyGLControl\obj\Debug\MyGLControl.dll
 D:\Study\OurProject\MyGLControl\obj\Debug\MyGLControl.pdb
+C:\Users\sony\Desktop\OurProject\MyGLControl\bin\Debug\MyGLControl.dll
+C:\Users\sony\Desktop\OurProject\MyGLControl\bin\Debug\MyGLControl.pdb
+C:\Users\sony\Desktop\OurProject\MyGLControl\bin\Debug\OpenTK.pdb
+C:\Users\sony\Desktop\OurProject\MyGLControl\bin\Debug\OpenTK.xml
+C:\Users\sony\Desktop\OurProject\MyGLControl\bin\Debug\OpenTK.GLControl.xml
+C:\Users\sony\Desktop\OurProject\MyGLControl\obj\Debug\MyGLControl.csprojResolveAssemblyReference.cache
+C:\Users\sony\Desktop\OurProject\MyGLControl\obj\Debug\MyGLControl.Axles3D.resources
+C:\Users\sony\Desktop\OurProject\MyGLControl\obj\Debug\MyGLControl.csproj.GenerateResource.Cache
+C:\Users\sony\Desktop\OurProject\MyGLControl\obj\Debug\MyGLControl.dll
+C:\Users\sony\Desktop\OurProject\MyGLControl\obj\Debug\MyGLControl.pdb

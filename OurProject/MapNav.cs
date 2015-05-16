@@ -58,5 +58,10 @@ namespace OurProject
         {
             this.Hide();
         }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Document.InvokeScript("clearAll");
+        }
     }
 }

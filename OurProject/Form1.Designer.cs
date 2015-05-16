@@ -58,8 +58,6 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.btnWave = new System.Windows.Forms.Button();
             this.btnMap = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.throttle = new System.Windows.Forms.TrackBar();
             this.btnSetPID = new System.Windows.Forms.Button();
             this.btn_state = new System.Windows.Forms.Button();
             this.main_timer = new System.Windows.Forms.Timer(this.components);
@@ -68,8 +66,6 @@
             this.groupBox2.SuspendLayout();
             this.gbPortSettings.SuspendLayout();
             this.gbMode.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.throttle)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,7 +82,7 @@
             this.groupBox1.Size = new System.Drawing.Size(381, 262);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "三维姿态";
             // 
             // axles3D1
             // 
@@ -230,7 +226,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(51, 22);
             this.btnClear.TabIndex = 23;
-            this.btnClear.Text = "清屏";
+            this.btnClear.Text = "清零";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -384,9 +380,9 @@
             // 
             // btnWave
             // 
-            this.btnWave.Location = new System.Drawing.Point(161, 392);
+            this.btnWave.Location = new System.Drawing.Point(72, 370);
             this.btnWave.Name = "btnWave";
-            this.btnWave.Size = new System.Drawing.Size(75, 29);
+            this.btnWave.Size = new System.Drawing.Size(106, 51);
             this.btnWave.TabIndex = 18;
             this.btnWave.Text = "打开波形图";
             this.btnWave.UseVisualStyleBackColor = true;
@@ -394,37 +390,19 @@
             // 
             // btnMap
             // 
-            this.btnMap.Location = new System.Drawing.Point(267, 391);
+            this.btnMap.Location = new System.Drawing.Point(223, 369);
             this.btnMap.Name = "btnMap";
-            this.btnMap.Size = new System.Drawing.Size(75, 30);
+            this.btnMap.Size = new System.Drawing.Size(96, 52);
             this.btnMap.TabIndex = 19;
             this.btnMap.Text = "打开地图";
             this.btnMap.UseVisualStyleBackColor = true;
             this.btnMap.Click += new System.EventHandler(this.btnMap_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.throttle);
-            this.groupBox3.Location = new System.Drawing.Point(29, 302);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(207, 68);
-            this.groupBox3.TabIndex = 22;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "油门显示";
-            // 
-            // throttle
-            // 
-            this.throttle.Location = new System.Drawing.Point(6, 23);
-            this.throttle.Maximum = 100;
-            this.throttle.Name = "throttle";
-            this.throttle.Size = new System.Drawing.Size(201, 45);
-            this.throttle.TabIndex = 4;
-            // 
             // btnSetPID
             // 
-            this.btnSetPID.Location = new System.Drawing.Point(50, 392);
+            this.btnSetPID.Location = new System.Drawing.Point(72, 302);
             this.btnSetPID.Name = "btnSetPID";
-            this.btnSetPID.Size = new System.Drawing.Size(75, 29);
+            this.btnSetPID.Size = new System.Drawing.Size(106, 48);
             this.btnSetPID.TabIndex = 23;
             this.btnSetPID.Text = "设置PID";
             this.btnSetPID.UseVisualStyleBackColor = true;
@@ -432,9 +410,9 @@
             // 
             // btn_state
             // 
-            this.btn_state.Location = new System.Drawing.Point(267, 333);
+            this.btn_state.Location = new System.Drawing.Point(223, 302);
             this.btn_state.Name = "btn_state";
-            this.btn_state.Size = new System.Drawing.Size(75, 23);
+            this.btn_state.Size = new System.Drawing.Size(96, 48);
             this.btn_state.TabIndex = 24;
             this.btn_state.Text = "飞机状态";
             this.btn_state.UseVisualStyleBackColor = true;
@@ -452,13 +430,12 @@
             this.ClientSize = new System.Drawing.Size(929, 474);
             this.Controls.Add(this.btn_state);
             this.Controls.Add(this.btnSetPID);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnMap);
             this.Controls.Add(this.btnWave);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "OurGroundStation";
+            this.Text = "HW_31";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -467,9 +444,6 @@
             this.gbPortSettings.PerformLayout();
             this.gbMode.ResumeLayout(false);
             this.gbMode.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.throttle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -501,8 +475,6 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnWave;
         private System.Windows.Forms.Button btnMap;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TrackBar throttle;
         private System.Windows.Forms.Button btnSetPID;
         private System.Windows.Forms.Button btn_state;
         private System.Windows.Forms.Label lable_sum;

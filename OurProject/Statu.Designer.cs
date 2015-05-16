@@ -39,6 +39,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -145,15 +146,28 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "垂直速度计";
             // 
+            // btn_exit
+            // 
+            this.btn_exit.Location = new System.Drawing.Point(414, 338);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(75, 23);
+            this.btn_exit.TabIndex = 11;
+            this.btn_exit.Text = "exit";
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click_1);
+            // 
             // Statu
             // 
-            this.ClientSize = new System.Drawing.Size(536, 342);
+            this.ClientSize = new System.Drawing.Size(534, 362);
+            this.ControlBox = false;
+            this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Statu";
+            this.Text = "Statu";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -176,5 +190,6 @@
         public AvionicsInstrumentControlDemo.TurnCoordinatorInstrumentControl turnCoordinatorInstrumentControl1;
         public AvionicsInstrumentControlDemo.VerticalSpeedIndicatorInstrumentControl verticalSpeedIndicatorInstrumentControl1;
         public AvionicsInstrumentControlDemo.AirSpeedIndicatorInstrumentControl airSpeedIndicatorInstrumentControl1;
+        private System.Windows.Forms.Button btn_exit;
     }
 }

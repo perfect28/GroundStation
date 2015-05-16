@@ -27,7 +27,7 @@ namespace OurProject
         short acc_x, acc_y, acc_z;
         short gyr_x, gyr_y, gyr_z;
         short mag_x, mag_y, mag_z;
-        int tel_rol, tel_pit, tel_yaw;
+        short tel_rol, tel_pit, tel_yaw;
         int mot1, mot2, mot3, mot4;
         short aux1, aux2, aux3, aux4, aux5, aux6;
         float lat, lng;
@@ -144,7 +144,7 @@ namespace OurProject
             return (short)Convert.ToDecimal((short)((b1 << 8 )| b2));
         }
 
-
+        int map_times = 0;
         int data_num = 0;//上次未处理数据长度
         int sum_num = 0;//总帧数
         int sum_byte = 0;//总字节数
@@ -223,10 +223,14 @@ namespace OurProject
                             if ((data_num - I - 5) > _frame_len) //缓冲区还有完整帧
                             {
                                 sum = 0;
-                                
+
                                 show_buffer = new byte[5 + _frame_len];
-                                for (int k = I; k <= I + 4 + _frame_len; k++)
-                                    show_buffer[k - I] = buffer[k];
+                                lock (show_buffer)
+                                {  
+                                    for (int k = I; k <= I + 4 + _frame_len; k++)
+                                        show_buffer[k - I] = buffer[k];
+                                }
+                                
                                 
                                 for (int k = I; k <= I + 3 + _frame_len; k++)
                                     sum += buffer[k];
@@ -251,16 +255,16 @@ namespace OurProject
                                             lat = (float)Convert.ToDecimal((int)((buffer[4] << 24) | (buffer[5] << 16) | (buffer[6] << 8) | (buffer[7])));
                                             lng = (float)Convert.ToDecimal((int)((buffer[8] << 24) | (buffer[9] << 16) | (buffer[10] << 8) | (buffer[11])));
 
-                                            mapNav.webBrowser1.Invoke(new EventHandler(delegate
-                                            {
-                                                mapNav.webBrowser1.Document.InvokeScript("setLocation", new object[] { lat, lng });
-                                            }));
+                                            lat = lat / 10000000;
+                                            lng = lng / 10000000;
+                                            map_times++;
                                             break;
+
                                         case 6://PWM
                                             PWM(I);
                                             break;
                                         default:
-                                            Log(LogMsgType.Error, "不识别功能字");
+                                            //Log(LogMsgType.Error, "不识别功能字");
                                             break;
                                     }//switch
                                     I = I + 5 + _frame_len; // I指向下一帧数据
@@ -313,25 +317,40 @@ namespace OurProject
         private void TeleControl(int I)
         {
  	        //03: AAAA 03 XX(LEN) XXXX(THR) XXXX(YAW) XXXX(ROL) XXXX(PIT) XXXX(AUX1) XXXX(AUX2) XXXX(AUX3) XXXX(AUX4) XXXX(AUX5) XXXX(AUX6) XX(SUM)
+            //AAAA 03 0C 03E8 05DA 05DC 05DC 0000 0000 EF
             thr = ByteToDecimal(buffer[I + 4], buffer[I + 5]);
-
+            if (thr < 1000) thr = 1000;
+            if (thr > 2000) thr = 2000;
             /*
             throttle.Invoke(new EventHandler(delegate
             {
                 throttle.Value = thr;
             }));
             */
+            tel_yaw = ByteToDecimal(buffer[I + 6], buffer[I + 7]);
+            tel_rol = ByteToDecimal(buffer[I + 8], buffer[I + 9]);
+            tel_pit = ByteToDecimal(buffer[I + 10], buffer[I + 11]);
+            if (tel_yaw < 1000)
+                tel_yaw = 1000;
+            if (tel_yaw > 2000)
+                tel_yaw = 2000;
 
-            tel_yaw = (int)ByteToDecimal(buffer[I + 6], buffer[I + 7]);
-            tel_rol = (int)ByteToDecimal(buffer[I + 8], buffer[I + 9]);
-            tel_pit = (int)ByteToDecimal(buffer[I + 10], buffer[I + 11]);
+            if (tel_rol < 1000)
+                tel_rol = 1000;
+            if (tel_rol > 2000)
+                tel_rol = 2000;
+
+            if (tel_pit < 1000)
+                tel_pit = 1000;
+            if (tel_pit > 2000)
+                tel_pit = 2000;
 
             aux1 = ByteToDecimal(buffer[I + 12], buffer[I + 13]);
             aux2 = ByteToDecimal(buffer[I + 14], buffer[I + 15]);
-            aux3 = ByteToDecimal(buffer[I + 16], buffer[I + 17]);
-            aux4 = ByteToDecimal(buffer[I + 18], buffer[I + 19]);
-            aux5 = ByteToDecimal(buffer[I + 20], buffer[I + 21]);
-            aux6 = ByteToDecimal(buffer[I + 22], buffer[I + 23]);
+            //aux3 = ByteToDecimal(buffer[I + 16], buffer[I + 17]);
+            //aux4 = ByteToDecimal(buffer[I + 18], buffer[I + 19]);
+            //aux5 = ByteToDecimal(buffer[I + 20], buffer[I + 21]);
+            //aux6 = ByteToDecimal(buffer[I + 22], buffer[I + 23]);
         }
 
         private void Sensor(int I,DataRow row)
@@ -391,20 +410,26 @@ namespace OurProject
 
         private void btnSetPID_Click(object sender, EventArgs e)
         {
-            if (!settingPID.IsHandleCreated)
+            if (settingPID.Visible==false)
                 settingPID.Show();
         }
 
         private void btnWave_Click(object sender, EventArgs e)
         {
-            if (!waveform.IsHandleCreated)
+            if (waveform.Visible==false)
                 waveform.Show();
         }
 
         private void btnMap_Click(object sender, EventArgs e)
         {
-            if (!mapNav.IsHandleCreated)
+            if (mapNav.Visible == false)
                 mapNav.Show();
+        }
+
+        private void btn_state_Click(object sender, EventArgs e)
+        {
+            if (statu.Visible == false)
+                statu.Show();
         }
 
 
@@ -470,6 +495,8 @@ namespace OurProject
         private void btnClear_Click(object sender, EventArgs e)
         {
             rtbTerminal.Text = "";
+            sum_num = 0;//总帧数
+            sum_byte = 0;//总字节数
         }
 
         /*打开串口按钮响应事件*/
@@ -523,11 +550,7 @@ namespace OurProject
             rtbTerminal.ScrollToCaret();
         }
 
-        private void btn_state_Click(object sender, EventArgs e)
-        {
-            if (!statu.IsHandleCreated)
-                statu.Show();
-        }
+        
 
         private void main_timer_Tick(object sender, EventArgs e)
         {
@@ -539,7 +562,7 @@ namespace OurProject
                 show_buffer = null;
             }
             rol_label.Text = rol.ToString();
-            axles3D1.AngleZ = rol;
+            axles3D1.AngleZ = -rol;
             yaw_label.Text = yaw.ToString();
             axles3D1.AngleY = yaw;
             pit_label.Text = pit.ToString();
@@ -567,6 +590,22 @@ namespace OurProject
                 waveform.dt.Rows.RemoveAt(0);
             }
 
+            if (thr >= 1000 && thr <= 2000) 
+            //if (pit > 1000 && pit < 2000 && rol > 1000 && rol < 2000 && yaw > 1000 && yaw < 2000)
+            {
+                settingPID.pb_pit.Value = tel_pit;
+                settingPID.pb_rol.Value = tel_rol;
+                settingPID.pb_yaw.Value = tel_yaw;
+                settingPID.pb_thr.Value = thr;
+
+                settingPID.label_thr.Text = "THR: " + (thr - 1000) / 10 + "%";
+                settingPID.label_pit.Text = "PIT: " + (tel_pit - 1000) / 10 + "%";
+                settingPID.label_rol.Text = "ROL: " + (tel_rol - 1000) / 10 + "%";
+                settingPID.label_yaw.Text = "YAW: " + (tel_yaw - 1000) / 10 + "%";
+            }
+            
+            if (mapNav.IsHandleCreated&&map_times%50==0)
+                mapNav.webBrowser1.Document.InvokeScript("setLocation", new object[] { lat, lng });
             if (settingPID.IsHandleCreated)
                 ShowPID();
             if (waveform.IsHandleCreated)
@@ -575,6 +614,8 @@ namespace OurProject
             statu.attitudeIndicatorInstrumentControl1.SetAttitudeIndicatorParameters(Pit, Rol);
             statu.headingIndicatorInstrumentControl1.SetHeadingIndicatorParameters((int)yaw);
         }
+
+        
 
 
     }

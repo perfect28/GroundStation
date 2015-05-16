@@ -21,5 +21,10 @@ namespace OurProject
         {
             this.Hide();
         }
+
+        private void btn_exit_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

@@ -31,6 +31,7 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -43,7 +44,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(518, 286);
+            this.button1.Location = new System.Drawing.Point(518, 252);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -61,12 +62,23 @@
             this.btn_exit.UseVisualStyleBackColor = true;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
+            // btn_clear
+            // 
+            this.btn_clear.Location = new System.Drawing.Point(518, 291);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear.TabIndex = 3;
+            this.btn_clear.Text = "clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
             // MapNav
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 371);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.webBrowser1);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button btn_exit;
+        private System.Windows.Forms.Button btn_clear;
     }
 }
